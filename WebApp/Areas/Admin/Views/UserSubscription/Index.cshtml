@@ -1,0 +1,83 @@
+﻿@model WebApp.Areas.Admin.Models.UserSubscription.IndexViewModel
+
+<link rel="stylesheet" href="~/css/admin-user-subscriptions.css" />
+
+<div class="header-users-admin">
+    <div class="page-name">User Subscriptions</div>
+    <div class="header-buttons-container">
+        <a href="#" class="header-action-button btn-filters">Filters</a>
+    </div>
+</div>
+
+<div class="user-container">
+    <div class="user-catalog-header-row">
+        <div class="h-id">ID</div>
+        <div class="h-user">User Link</div>
+        <div class="h-plan">Plan Link</div>
+        <div class="h-date">Duration</div>
+        <div class="h-price">Price</div>
+        <div class="h-status">Auto-Renew</div>
+    </div>
+
+    @try
+    {
+        if (Model.Subscriptions != null && Model.Subscriptions.Any())
+        {
+            foreach (var item in Model.Subscriptions)
+            {
+                <div class="user-catalog-item">
+
+                    <div class="col-sub-id" title="@item.Id">
+                        #@item.Id
+                    </div>
+
+                    <div class="col-info link-col">
+                        <span class="label-mobile">User:</span>
+                        <a asp-area="Admin" asp-controller="User" asp-action="Edit" asp-route-id="@item.UserId">
+                            @item.UserId
+                        </a>
+                    </div>
+
+                    <div class="col-info link-col">
+                        <span class="label-mobile">Plan:</span>
+                        <a asp-area="Admin" asp-controller="SubscriptionPlan" asp-action="Edit" asp-route-id="@item.SubscriptionPlanId">
+                            Plan #@item.SubscriptionPlanId
+                        </a>
+                    </div>
+
+                    <div class="col-info date-col">
+                        <span class="label-mobile">Date:</span>
+                        <div class="date-range">
+                            <span>@item.StartDate.ToShortDateString()</span>
+                            <span class="date-arrow">&rarr;</span>
+                            <span>@item.EndDate.ToShortDateString()</span>
+                        </div>
+                    </div>
+
+                    <div class="col-info price-col">
+                        <span class="label-mobile">Price:</span>
+                        @item.PricePaid.ToString("C")
+                    </div>
+
+                    <div class="col-info status-col">
+                        <span class="label-mobile">Renew:</span>
+                        @if (item.IsAutoRenewEnabled)
+                        {
+                            <span class="status-badge active">On</span>
+                        }
+                        else
+                        {
+                            <span class="status-badge inactive">Off</span>
+                        }
+                    </div>
+
+                </div>
+            }
+        }
+        else
+        {
+            <div style="color: #888; text-align: center; padding: 20px;">Список підписок порожній</div>
+        }
+    }
+    catch { }
+</div>

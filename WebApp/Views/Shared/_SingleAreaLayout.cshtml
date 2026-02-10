@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/admin-layout.css" />
+
+<div class="notebook-horizontal">
+    <div class="main-container-wrapper">
+        <div class="main-container">
+            <main class="admin-content-wrapper">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await RenderSectionAsync("Scripts", required: false)
+}

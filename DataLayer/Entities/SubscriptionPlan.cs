@@ -1,0 +1,21 @@
+﻿using Microsoft.AspNetCore.Identity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DataLayer.Entities
+{
+    public class SubscriptionPlan
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public int DurationDays { get; set; }
+        public int StorageLimitGb { get; set; }
+        public int DailyRequestsLimit { get; set; }
+        public string? Description { get; set; }
+        
+    }
+}

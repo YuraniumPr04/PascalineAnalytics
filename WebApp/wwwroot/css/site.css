@@ -1,0 +1,146 @@
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+
+.notebook-vertical {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.top-floater {
+    background-color: #131314;
+    color: #e3e3e3;
+    min-height: 120px;
+    width: 100%;
+    flex: 0 0 120px;
+    display: flex;
+    align-items: center;
+}
+
+.header-content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 10px 30px;
+    align-items: stretch; 
+}
+
+
+.header-icon {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+    .header-icon img {
+        max-height: 70px;
+        width: auto;
+    }
+
+.header-toolbar {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+
+
+.project-name {
+    height: 60%;
+    font-size: 1.8rem; 
+    font-weight: 700;
+    display: flex;
+    align-items: flex-end; 
+    padding-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+
+.header-navbar {
+    height: 40%;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start; 
+    padding-bottom: 10px; 
+}
+
+    .header-navbar a {
+        color: #e3e3e3;
+        text-decoration: none;
+        padding: 6px;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        transition: background 0.2s;
+    }
+
+
+        .header-navbar a:hover {
+            background-color: #232324;
+        }
+
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-left: auto; 
+}
+
+.header-language-settings, .header-account-container {
+    font-size: 2.4rem;
+    cursor: pointer;
+    opacity: 0.8;
+}
+    .header-language-settings, .header-account-container a {
+        color: #e3e3e3;
+        text-decoration: none;
+        transition: background 0.2s;
+    }
+
+    .header-language-settings:hover, .header-account-container:hover {
+        opacity: 1;
+    }
+
+.header-language-settings {
+    font-size: 2.4rem;
+    cursor: pointer;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+}
+
+.language-select-input {
+    background: transparent;
+    border: none;
+    color: #e3e3e3; 
+    font-size: inherit; 
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+    padding-right: 5px;
+    appearance: listbox;
+    -webkit-appearance: menulist; 
+}
+
+   
+    .language-select-input option {
+        background-color: #333; 
+        color: #fff;
+        font-size: 1.2rem; 
+    }
+
+.header-language-settings:hover {
+    opacity: 1;
+}
+
+.main-content-wrapper {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}

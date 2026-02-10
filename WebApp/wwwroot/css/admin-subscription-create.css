@@ -1,0 +1,181 @@
+.subscription-container,
+.header-supscription-plans-admin {
+    color: #e3e3e3;
+}
+
+/* --- HEADER --- */
+.header-supscription-plans-admin {
+    background-color: #1e1f20;
+    border-radius: 16px; /*30 ред*/
+    padding: 15px 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+    .header-supscription-plans-admin .page-name {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+
+/* --- HEADER BUTTONS --- */
+
+
+.header-buttons-container {
+    display: flex;
+    gap: 15px;
+}
+
+
+.header-action-button {
+    padding: 10px 25px;
+    border-radius: 16px; /*50 ред*/
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.2s, transform 0.1s;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+    .header-action-button:hover {
+        opacity: 0.9;
+        color: white !important;
+    }
+
+    .header-action-button:active {
+        transform: scale(0.98);
+    }
+
+
+.btn-save {
+    background-color: #82b76c;
+}
+
+
+.btn-cancel {
+    background-color: #d7ba7d;
+}
+
+
+/*-INPUTS-*/
+
+.attribute-container {
+    background-color: #1e1f20;
+    border-radius: 16px;
+    padding: 20px 25px; /* Внутрішні відступи */
+    margin-bottom: 15px; /* Відступ між блоками */
+    width: 100%;
+    /* Розміщення в стовпчик */
+    display: flex;
+    flex-direction: column;
+    /* Забираємо стандартні рамки */
+    border: none;
+    box-sizing: border-box;
+}
+
+.attribute-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #e3e3e3; /* Колір тексту заголовка */
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+/* Поле вводу (і input, і textarea) */
+.attribute-input {
+    background-color: transparent; /* Прозорий фон */
+    border: none; /* Без рамок */
+    outline: none; /* Без обводки при кліку */
+
+    width: 100%;
+    color: white; /* Білий текст при вводі */
+    font-size: 1.1rem;
+    font-family: inherit;
+    padding: 5px 0;
+}
+
+/* Специфічні стилі для багаторядкового тексту */
+textarea.attribute-input {
+    resize: vertical; /* Дозволяє розтягувати вниз, але не в ширину */
+    min-height: 60px;
+    line-height: 1.5;
+}
+
+/* Стиль для плейсхолдера (підказки), щоб він був сірим */
+.attribute-input::placeholder {
+    color: #6c757d;
+    opacity: 1;
+}
+
+/* Невеликий ефект при фокусі, щоб користувач бачив де пише (опціонально) */
+.attribute-container:focus-within {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.attribute-input::-webkit-scrollbar {
+    width: 0px; 
+    background: transparent; 
+}
+.admin-sidemenu::-webkit-scrollbar,
+.main-container::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+
+.attribute-input::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
+.attribute-input::-webkit-scrollbar-thumb {
+    background-color: #4b4d4f;
+    border-radius: 10px;
+}
+
+    
+    .attribute-input::-webkit-scrollbar-thumb:hover {
+        background-color: #606265;
+    }
+
+
+.attribute-input::-webkit-scrollbar-button {
+    display: none;
+}
+
+
+.attribute-input::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+.attribute-input::-webkit-outer-spin-button,
+.attribute-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+.attribute-input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.validation-error {
+    color: #861b2d;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: block;
+}
+
+
+.input-validation-error {
+    border-bottom: 1px solid #861b2d !important;
+}

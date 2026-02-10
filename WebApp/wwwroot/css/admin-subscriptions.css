@@ -1,0 +1,186 @@
+.subscription-container,
+.header-supscription-plans-admin {
+    color: #e3e3e3;
+}
+
+/* --- HEADER --- */
+.header-supscription-plans-admin {
+    background-color: #1e1f20;
+    border-radius: 16px; /*30 ред*/
+    padding: 15px 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+    .header-supscription-plans-admin .page-name {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+
+/* --- HEADER BUTTONS --- */
+
+
+.header-buttons-container {
+    display: flex;
+    gap: 15px; 
+}
+
+
+.header-action-button {
+    padding: 10px 25px;
+    border-radius: 16px; /*50 ред*/
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.2s, transform 0.1s;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+    .header-action-button:hover {
+        opacity: 0.9;
+        color: white !important;
+    }
+
+    .header-action-button:active {
+        transform: scale(0.98);
+    }
+
+
+.btn-add-new {
+    background-color: #82b76c;
+}
+
+
+.btn-filters {
+    background-color: #004a77;
+}
+
+
+/* --- CATALOG CONTAINER --- */
+.subscription-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding-bottom: 40px;
+}
+
+/* --- CATALOG ITEM (CARD) --- */
+.subscriptions-catalog-item {
+    background-color: #1e1f20;
+    border-radius: 16px; /*20 ред*/
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s;
+}
+
+    .subscriptions-catalog-item:hover {
+        transform: translateY(-5px); /* Легкий підйом при наведенні залишився */
+    }
+
+.subscription-name {
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: #1e1f20;
+}
+
+.subscription-duration {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-bottom: 15px;
+}
+
+.subscription-description {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 15px 0;
+    flex-grow: 1;
+}
+
+.subscription-details {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+/* Розділювальна лінія */
+.item-divider-line {
+    height: 1px;
+    background-color: #313333;
+    width: 100%;
+    margin: 10px 0;
+}
+
+/* --- ACTION BUTTONS --- */
+.subscription-actions-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Загальні стилі для кнопок */
+.subscription-edit-button,
+.subscription-delete-button {
+    flex: 1;
+    padding: 10px 20px;
+    border-radius: 16px; /*50 ред*/
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+    .subscription-edit-button:hover,
+    .subscription-delete-button:hover {
+        opacity: 0.9;
+        color: white !important;
+        text-decoration: none !important;
+    }
+
+    .subscription-edit-button:active,
+    .subscription-delete-button:active {
+        transform: scale(0.98);
+        color: white !important;
+        text-decoration: none !important;
+    }
+
+
+.subscription-edit-button {
+    background-color: #d7ba7d;
+    color: white !important;
+    text-decoration: none !important;
+}
+
+    .subscription-edit-button a {
+        color: white !important;
+        text-decoration: none !important;
+    }
+
+.subscription-actions-container form {
+    flex: 1;
+    display: flex;
+}
+
+.subscription-delete-button {
+    background-color: #861b2d;
+    width: 100%;
+}

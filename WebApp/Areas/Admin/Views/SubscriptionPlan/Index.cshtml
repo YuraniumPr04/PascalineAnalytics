@@ -1,0 +1,62 @@
+﻿@model WebApp.Areas.Admin.Models.SubscriptionPlan.IndexViewModel
+
+<link rel="stylesheet" href="~/css/admin-subscriptions.css" />
+
+<div class="header-supscription-plans-admin">
+    <div class="page-name">Subscription plan catalog</div>
+    <div class="header-buttons-container">
+        <a href="#" class="header-action-button btn-filters">
+            Filters
+        </a>
+
+        <a asp-action="Create" class="header-action-button btn-add-new">
+            Add New
+        </a>
+    </div>
+</div>
+<div class="subscription-container">
+    @try
+    {
+        foreach (var item in Model.SubscriptionPlans)
+        {
+            <div class="subscriptions-catalog-item">
+                <h1 style="subscription-name">
+                    @item.Name
+                </h1>
+                <div class="subscription-duration">
+                    @item.DurationDays days
+                </div>
+                <div class="item-divider-line"></div>
+                <div class="subscription-description">
+                    @item.Description
+                </div>
+                <div class="item-divider-line"></div>
+                <div class="subscription-details">
+                    Storage available: @item.StorageLimitGb
+                </div>
+                <div class="subscription-details">
+                    Daily requests: @item.DailyRequestsLimit
+                </div>
+                <div class="subscription-details">
+                    @item.Price $
+                </div>
+
+                <div class="subscription-actions-container">
+                    <a asp-area="Admin" asp-controller="SubscriptionPlan" asp-action="Edit" asp-route-id="@item.Id" class="subscription-edit-button">Edit</a>
+
+                    <form asp-action="Delete" asp-route-id="@item.Id" method="post">
+                        <button type="submit"
+                                class="subscription-delete-button"
+                                onclick="return confirm('Ви впевнені, що хочете видалити цей план? Цю дію неможливо скасувати.');">
+                            Delete
+                        </button>
+                    </form>
+                </div>
+            </div>
+        }
+    }catch{}
+</div>
+
+@section Scripts {
+
+}

@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/admin-layout.css" />
+
+<div class="notebook-horizontal">
+    <aside class="admin-sidemenu-wapper">
+        <div class="admin-sidemenu">
+            <h1 class="admin-title">Tools</h1>
+            <div class="sidemenu-divider-line"></div>
+            <nav class="admin-sidemenu-nav">
+                <ul>
+                    <li><a asp-area="Admin" asp-controller="File" asp-action="Index">File</a></li>
+                    <li><a asp-area="Admin" asp-controller="Report" asp-action="Index">Report</a></li>
+                    <li><a asp-area="Admin" asp-controller="DataCleaning" asp-action="Index">Data Cleaning</a></li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    <div class="resizer" id="dragMe"></div>
+    <div class="main-container-wrapper">
+        <div class="main-container">
+            <main class="admin-content-wrapper">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/admin-resizer.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+}

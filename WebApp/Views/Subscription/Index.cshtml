@@ -1,0 +1,105 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="~/css/subscription.css" />
+
+<div class="notebook-horizontal">
+    <aside class="sidemenu-wapper">
+        <div class="sidemenu">
+            <h1 class="sidemenu-title">Active subscription</h1>
+            <div class="sidemenu-divider-line"></div>
+            @if (Model.CurrentSubscriptionPlan != null)
+            {
+                <div class="subscription-details-list">
+                    <div class="detail-item">
+                        <span class="detail-label">Plan Name:</span>
+                        <span class="detail-value">@Model.CurrentSubscriptionPlan.Name</span>
+                    </div>
+
+                    <div class="detail-item">
+                        <span class="detail-label">Price:</span>
+                        <span class="detail-value">@Model.CurrentSubscriptionPlan.Price.ToString("F2") ₴</span>
+                    </div>
+
+                    <div class="detail-item">
+                        <span class="detail-label">Duration:</span>
+                        <span class="detail-value">@Model.CurrentSubscriptionPlan.DurationDays days</span>
+                    </div>
+
+                    <div class="detail-item">
+                        <span class="detail-label">Storage Limit:</span>
+                        <span class="detail-value">@Model.CurrentSubscriptionPlan.StorageLimitGb GB</span>
+                    </div>
+
+                    <div class="detail-item">
+                        <span class="detail-label">Daily Requests:</span>
+                        <span class="detail-value">@Model.CurrentSubscriptionPlan.DailyRequestsLimit</span>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <p class="no-subscription-text">No active subscription found.</p>
+            }
+        </div>
+    </aside>
+    <div class="resizer" id="dragMe"></div>
+    <div class="main-container-wrapper">
+        <div class="main-container">
+            <div class="header-supscription-plans">
+                <div class="page-name">Subscription plan catalog</div>
+                <div class="header-buttons-container">
+                    <a href="#" class="header-action-button btn-filters">
+                        Filters
+                    </a>
+                </div>
+            </div>
+            <div class="subscription-container">
+                @try
+                {
+                    foreach (var item in Model.SubscriptionPlans)
+                    {
+                        <div class="subscriptions-catalog-item">
+                            <h1 style="subscription-name">
+                                @item.Name
+                            </h1>
+                            <div class="subscription-duration">
+                                @item.DurationDays days
+                            </div>
+                            <div class="item-divider-line"></div>
+                            <div class="subscription-description">
+                                @item.Description
+                            </div>
+                            <div class="item-divider-line"></div>
+                            <div class="subscription-details">
+                                Storage available: @item.StorageLimitGb
+                            </div>
+                            <div class="subscription-details">
+                                Daily requests: @item.DailyRequestsLimit
+                            </div>
+                            <div class="subscription-details">
+                                @item.Price $
+                            </div>
+
+                            <div class="subscription-actions-container">
+                                <form asp-action="Buy" asp-route-id="@item.Id" method="post">
+                                    <button type="submit"
+                                            class="subscription-buy-button"
+                                            onclick="return confirm('Ви впевнені, що хочете придбати цей план?');">
+                                        Buy
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    }
+                }
+                catch { }
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/admin-resizer.js"></script>
+}

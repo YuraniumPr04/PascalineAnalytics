@@ -1,0 +1,91 @@
+﻿@model WebApp.Areas.Admin.Models.User.IndexViewModel
+
+<link rel="stylesheet" href="~/css/admin-users.css" />
+
+<div class="header-users-admin">
+    <div class="page-name">User catalog</div>
+    <div class="header-buttons-container">
+        <a href="#" class="header-action-button btn-filters">Filters</a>
+        <a asp-area="Admin" asp-controller="User" asp-action="Create" class="header-action-button btn-add-new">Add New</a>
+    </div>
+</div>
+
+<div class="user-container">
+    <div class="user-catalog-header-row">
+        <div class="h-id">ID</div>
+        <div class="h-email">Email</div>
+        <div class="h-user">Username</div>
+        <div class="h-tel">Phone</div>
+        <div class="h-role">Roles</div>
+        <div class="h-action">Actions</div>
+    </div>
+
+    @try
+    {
+        if (Model.UserViewModels != null && Model.UserViewModels.Any())
+        {
+            foreach (var item in Model.UserViewModels)
+            {
+                <div class="user-catalog-item">
+
+                    <div class="col-id" title="@item.Id">
+                        #@item.Id
+                    </div>
+
+                    <div class="col-info email">
+                        <span class="label-mobile">Email:</span>
+                        @item.Email
+                    </div>
+
+                    <div class="col-info name">
+                        <span class="label-mobile">User:</span>
+                        @item.Username
+                    </div>
+
+                    <div class="col-info telephone">
+                        <span class="label-mobile">Tel:</span>
+                        @(string.IsNullOrEmpty(item.Telephone) ? "-" : item.Telephone)
+                    </div>
+
+                    <div class="col-roles">
+                        <span class="label-mobile">Roles:</span>
+                        @if (item.Roles != null && item.Roles.Any())
+                        {
+                            foreach (var role in item.Roles)
+                            {
+                                <span class="role-badge">@role</span>
+                            }
+                        }
+                        else
+                        {
+                            <span style="opacity:0.5; font-size:0.8rem">-</span>
+                        }
+                    </div>
+
+                    <div class="actions-column">
+                        <a asp-area="Admin" asp-controller="UserSubscriptions" asp-action="Index" asp-route-id="@item.Id" class="action-btn btn-view">
+                            Subs
+                        </a>
+
+                        <a asp-area="Admin" asp-controller="User" asp-action="Edit" asp-route-id="@item.Id" class="action-btn btn-edit">
+                            Edit
+                        </a>
+
+                        <form asp-action="Delete" asp-route-id="@item.Id" method="post" style="width: 100%;">
+                            <button type="submit"
+                                    class="action-btn btn-delete"
+                                    onclick="return confirm('Видалити користувача?');">
+                                Del
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div style="color: #888; text-align: center; padding: 20px;">Список користувачів порожній</div>
+        }
+    }
+    catch { }
+</div>

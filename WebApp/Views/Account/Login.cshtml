@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "~/Views/Shared/_SingleAreaLayout.cshtml";
+}
+
+@model WebApp.Models.Account.LoginViewModel
+
+<link rel="stylesheet" href="~/css/register.css" />
+
+<form asp-action="Login" method="post" class="subscription-form-full">
+
+    <div class="header" style="margin-bottom: 30px;">
+        <div class="page-name">Log In</div>
+        <div class="header-buttons-container">
+            <a asp-area="" asp-controller="Account" asp-action="Register" class="header-action-button btn-cancel">Register</a>
+            <button type="submit" class="header-action-button btn-save">Enter</button>
+        </div>
+    </div>
+
+    <div class="attribute-container">
+        <label asp-for="Email" class="attribute-label">Email</label>
+        <div class="item-divider-line"></div>
+        <input asp-for="Email" class="attribute-input" placeholder="example@mail.com" />
+        <span asp-validation-for="Email" class="validation-error"></span>
+    </div>
+
+    <div class="attribute-container">
+        <label asp-for="Password" class="attribute-label">Password</label>
+        <div class="item-divider-line"></div>
+        <input asp-for="Password" type="password" class="attribute-input" placeholder="••••••••" />
+        <span asp-validation-for="Password" class="validation-error"></span>
+    </div>
+
+    <div class="attribute-container" style="flex-direction: row; align-items: center; border: none; padding-left: 0;">
+        <input asp-for="RememberMe" style="width: 20px; height: 20px; cursor: pointer;" />
+        <label asp-for="RememberMe" class="attribute-label" style="margin-left: 10px; margin-bottom: 0; cursor: pointer;">Remember me?</label>
+    </div>
+
+    @if (!ViewData.ModelState.IsValid && ViewData.ModelState[""] != null && ViewData.ModelState[""].Errors.Count > 0)
+    {
+        <div class="attribute-container" style="border: 1px solid #861b2d; margin-top: 20px;">
+            <div style="color: #861b2d;">
+                @Html.ValidationSummary(true)
+            </div>
+        </div>
+    }
+
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

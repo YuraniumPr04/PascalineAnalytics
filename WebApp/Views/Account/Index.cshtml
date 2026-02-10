@@ -1,0 +1,70 @@
+﻿@{
+    Layout = "~/Views/Shared/_SingleAreaLayout.cshtml";
+}
+
+@model WebApp.Models.Account.IndexViewModel
+
+<link rel="stylesheet" href="~/css/admin-user-edit.css" />
+
+@* Використовуємо asp-action="Edit", щоб основна кнопка Save працювала правильно *@
+<form asp-action="Edit" method="post" class="subscription-form-full">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="Id" />
+
+    <div class="header-users-admin">
+        <div class="page-name">Edit User Profile</div>
+
+        <div class="header-buttons-container">
+            @* Reset просто очищує зміни в інпутах *@
+            <button type="reset" class="header-action-button btn-reset">Reset</button>
+
+            @* Delete: додаємо formaction, щоб перевантажити дію форми *@
+            <button type="submit"
+                    asp-action="Delete"
+                    asp-controller="Account"
+                    asp-route-id="@Model.Id"
+                    class="header-action-button btn-delete"
+                    formnovalidate
+                    onclick="return confirm('Ви впевнені?');">
+                Delete
+            </button>
+
+            <a asp-action="Logout" class="header-action-button btn-cancel">Log out</a>
+
+            @* Основна кнопка відправить форму на Edit *@
+            <button type="submit" class="header-action-button btn-save">Save Changes</button>
+        </div>
+    </div>
+
+    @* Поля вводу *@
+    <div class="attribute-container">
+        <label asp-for="Email" class="attribute-label">Email</label>
+        <div class="item-divider-line"></div>
+        <input asp-for="Email" class="attribute-input" />
+        <span asp-validation-for="Email" class="validation-error"></span>
+    </div>
+
+    <div class="attribute-container">
+        <label asp-for="Username" class="attribute-label">Username</label>
+        <div class="item-divider-line"></div>
+        <input asp-for="Username" class="attribute-input" />
+        <span asp-validation-for="Username" class="validation-error"></span>
+    </div>
+
+    <div class="attribute-container">
+        <label asp-for="Telephone" class="attribute-label">Telephone</label>
+        <div class="item-divider-line"></div>
+        <input asp-for="Telephone" class="attribute-input" />
+        <span asp-validation-for="Telephone" class="validation-error"></span>
+    </div>
+
+    @* Вивід помилок *@
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="attribute-container" style="border: 1px solid #861b2d; margin-top: 10px;">
+            <div style="color: #861b2d; padding: 10px;">
+                @Html.ValidationSummary(true)
+            </div>
+        </div>
+    }
+</form>

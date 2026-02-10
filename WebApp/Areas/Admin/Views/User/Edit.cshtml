@@ -1,0 +1,76 @@
+﻿@model WebApp.Areas.Admin.Models.User.EditViewModel
+
+<link rel="stylesheet" href="~/css/admin-user-edit.css" />
+
+<form asp-action="Edit" method="post" class="subscription-form-full">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="header-users-admin">
+        <div class="page-name">Edit User #@Model.Id</div>
+
+        <div class="header-buttons-container">
+            <button type="reset" class="header-action-button btn-reset">
+                Reset
+            </button>
+
+            <button type="submit"
+                    asp-action="Delete"
+                    asp-route-id="@Model.Id"
+                    class="header-action-button btn-delete"
+                    formnovalidate
+                    onclick="return confirm('Ви впевнені, що хочете видалити цього користувача? Цю дію неможливо скасувати.');">
+                Delete
+            </button>
+
+            <a asp-action="Index" class="header-action-button btn-cancel">Cancel</a>
+
+            <button type="submit" class="header-action-button btn-save">Save Changes</button>
+        </div>
+    </div>
+
+    <div class="attribute-container">
+        <label asp-for="Email" class="attribute-label">Email</label>
+        <div class="item-divider-line"></div>
+        <input asp-for="Email" class="attribute-input" />
+        <span asp-validation-for="Email" class="validation-error"></span>
+    </div>
+
+    <div class="attribute-container">
+        <label asp-for="Username" class="attribute-label">Username</label>
+        <div class="item-divider-line"></div>
+        <input asp-for="Username" class="attribute-input" />
+        <span asp-validation-for="Username" class="validation-error"></span>
+    </div>
+
+    <div class="attribute-container">
+        <label asp-for="Telephone" class="attribute-label">Telephone</label>
+        <div class="item-divider-line"></div>
+        <input asp-for="Telephone" class="attribute-input" />
+        <span asp-validation-for="Telephone" class="validation-error"></span>
+    </div>
+
+    <div class="attribute-container">
+        <label asp-for="SelectedRole" class="attribute-label">Role</label>
+        <div class="item-divider-line"></div>
+        <select asp-for="SelectedRole" asp-items="Model.AllRoles" class="attribute-input">
+            <option value="" disabled>Оберіть роль...</option>
+        </select>
+        <span asp-validation-for="SelectedRole" class="validation-error"></span>
+    </div>
+
+    @if (!ViewData.ModelState.IsValid && ViewData.ModelState[""] != null && ViewData.ModelState[""].Errors.Count > 0)
+    {
+        <div class="attribute-container" style="border: 1px solid #861b2d;">
+            <div style="color: #861b2d;">
+                @Html.ValidationSummary(true)
+            </div>
+        </div>
+    }
+
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

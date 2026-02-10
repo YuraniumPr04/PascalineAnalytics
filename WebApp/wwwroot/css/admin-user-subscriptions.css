@@ -1,0 +1,277 @@
+body {
+    background-color: #121212;
+    color: #e3e3e3;
+    font-family: sans-serif;
+}
+
+/* --- HEADER (Той самий, що і в Users) --- */
+.header-users-admin {
+    background-color: #1e1f20;
+    border-radius: 16px;
+    padding: 15px 30px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .header-users-admin .page-name {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+.header-buttons-container {
+    display: flex;
+    gap: 15px;
+}
+
+.header-action-button {
+    padding: 10px 25px;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: white !important;
+    text-decoration: none !important;
+    transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .header-action-button:hover {
+        opacity: 0.9;
+    }
+
+.btn-filters {
+    background-color: #004a77;
+}
+
+
+/* --- CONTAINER --- */
+.user-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 40px;
+}
+
+/* --- ЗАГОЛОВОК ТАБЛИЦІ (Desktop) --- */
+.user-catalog-header-row {
+    display: flex;
+    padding: 0 25px;
+    font-weight: bold;
+    opacity: 0.6;
+    margin-bottom: 5px;
+    gap: 20px;
+    display: none; /* Mobile first */
+}
+
+    /* Налаштування ширини заголовків */
+    .user-catalog-header-row .h-id {
+        width: 60px;
+    }
+
+    .user-catalog-header-row .h-user {
+        flex: 2;
+    }
+    /* Широка колонка для User ID */
+    .user-catalog-header-row .h-plan {
+        flex: 1;
+    }
+
+    .user-catalog-header-row .h-date {
+        flex: 1.5;
+        text-align: center;
+    }
+
+    .user-catalog-header-row .h-price {
+        flex: 0.8;
+        text-align: right;
+    }
+
+    .user-catalog-header-row .h-status {
+        flex: 0.8;
+        text-align: center;
+    }
+
+@media (min-width: 900px) {
+    .user-catalog-header-row {
+        display: flex;
+    }
+}
+
+
+/* --- РЯДОК (ITEM) --- */
+.user-catalog-item {
+    background-color: #1e1f20;
+    border-radius: 16px;
+    padding: 15px 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    transition: background-color 0.2s;
+}
+
+    .user-catalog-item:hover {
+        background-color: #252627;
+    }
+
+/* --- КОЛОНКИ --- */
+
+/* ID */
+.col-sub-id {
+    font-weight: bold;
+    color: #6c757d;
+    width: 60px;
+    min-width: 60px;
+}
+
+/* Загальний клас для інформації */
+.col-info {
+    word-break: break-word;
+    font-size: 0.95rem;
+}
+
+/* User & Plan Links */
+.link-col {
+    flex: 2; /* User ID зазвичай довгий */
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* Plan ID коротший, даємо менше місця */
+.user-catalog-item .link-col:nth-child(3) {
+    flex: 1;
+}
+
+/* Стилізація посилань */
+.link-col a {
+    color: #d7ba7d; /* Золотистий колір, як кнопки Edit */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+    border-bottom: 1px dashed transparent;
+}
+
+    .link-col a:hover {
+        color: white;
+        border-bottom-color: white;
+    }
+
+/* Dates */
+.date-col {
+    flex: 1.5;
+    display: flex;
+    justify-content: center;
+}
+
+.date-range {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    opacity: 0.8;
+    font-size: 0.9rem;
+}
+
+.date-arrow {
+    color: #6c757d;
+}
+
+/* Price */
+.price-col {
+    flex: 0.8;
+    text-align: right;
+    font-weight: bold;
+    color: #82b76c; /* Зеленуватий для грошей */
+}
+
+/* Status */
+.status-col {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+}
+
+.status-badge {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+    .status-badge.active {
+        color: #82b76c;
+        background-color: rgba(130, 183, 108, 0.1);
+    }
+
+    .status-badge.inactive {
+        color: #6c757d;
+        background-color: rgba(108, 117, 125, 0.1);
+    }
+
+.label-mobile {
+    display: none;
+}
+
+
+/* --- MOBILE ADAPTATION --- */
+@media (max-width: 900px) {
+    .user-catalog-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .col-sub-id {
+        width: 100%;
+        border-bottom: 1px solid #333;
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+    }
+
+    /* Вирівнювання рядків на мобільному */
+    .col-info {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .link-col {
+        flex: unset;
+    }
+    /* Скидаємо flex пропорції */
+
+    .date-col {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .price-col {
+        text-align: left;
+    }
+
+    .status-col {
+        justify-content: space-between;
+    }
+
+    .label-mobile {
+        display: inline-block;
+        font-weight: bold;
+        color: #6c757d;
+        min-width: 80px;
+        margin-right: 10px;
+    }
+
+    /* Довгі ID юзерів обрізаємо на мобільному */
+    .link-col a {
+        max-width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        vertical-align: middle;
+    }
+}

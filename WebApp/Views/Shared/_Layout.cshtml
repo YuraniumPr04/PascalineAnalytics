@@ -1,0 +1,75 @@
+﻿@using Microsoft.AspNetCore.Http
+@using WebApp.Infrastructures.Extensions
+@{
+    var user = Context.Session.GetJson<dynamic>("CurrentUser");
+}
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebApp</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <div class="notebook-vertical">
+        <header class="top-floater">
+            <div class="header-content">
+                <div class="header-icon">
+                    <img src="~/images/752497.png" alt="Logo">
+                </div>
+
+                <div class="header-toolbar">
+                    <div class="project-name">Pascaline analytics</div>
+                    <nav class="header-navbar">
+                        <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a asp-area="" asp-controller="Home" asp-action="About">About us</a>
+                        <a asp-area="" asp-controller="Home" asp-action="FAQ">FAQ</a>
+                        <a asp-area="" asp-controller="Subscription" asp-action="Index">Subscriptions</a>
+                        <a asp-area="Workspace" asp-controller="Dashboard" asp-action="Index">Workspace</a>
+                        @if (user != null && user.Roles != null && user.Roles.Contains("admin"))
+                        {
+                            <a asp-area="Admin" asp-controller="SubscriptionPlan" asp-action="Index">Administry</a>
+                        }
+                        
+                    </nav>
+                </div>
+
+                <div class="header-right">
+                    <div class="header-language-settings">
+                        EN
+                    </div>
+                    <div class="header-account-container">
+
+                        @if (user != null)
+                        {
+                            <a asp-area="" asp-controller="Account" asp-action="Index">@user.Email</a>
+                        }
+                        else
+                        {
+                            <a asp-area="" asp-controller="Account" asp-action="Login">Log in</a>
+                        }
+                        
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        
+        <main class="main-content-wrapper">
+            @RenderBody()
+        </main>
+        
+    </div>
+
+
+
+
+    <script src="~/js/htmx.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

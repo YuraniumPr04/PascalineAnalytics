@@ -1,0 +1,268 @@
+body {
+    background-color: #121212;
+    color: #e3e3e3;
+    font-family: sans-serif;
+}
+
+/* --- HEADER --- */
+.header-users-admin {
+    background-color: #1e1f20;
+    border-radius: 16px;
+    padding: 15px 30px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .header-users-admin .page-name {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+.header-buttons-container {
+    display: flex;
+    gap: 15px;
+}
+
+.header-action-button {
+    padding: 10px 25px;
+    border-radius: 16px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: white !important;
+    text-decoration: none !important;
+    transition: opacity 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .header-action-button:hover {
+        opacity: 0.9;
+    }
+
+.btn-add-new {
+    background-color: #82b76c;
+}
+
+.btn-filters {
+    background-color: #004a77;
+}
+
+/* --- CONTAINER --- */
+.user-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 40px;
+}
+
+/* --- ЗАГОЛОВОК ТАБЛИЦІ (Desktop) --- */
+.user-catalog-header-row {
+    display: flex; /* Використовуємо Flex, щоб збігалося з рядками */
+    padding: 0 25px;
+    font-weight: bold;
+    opacity: 0.6;
+    margin-bottom: 5px;
+    gap: 20px; /* Такий самий gap як в item */
+    display: none;
+}
+
+    /* Вирівнювання заголовків відповідно до колонок */
+    .user-catalog-header-row .h-id {
+        width: 80px;
+    }
+    /* Фікс ширина як в col-id */
+    .user-catalog-header-row .h-email {
+        flex: 1.5;
+    }
+
+    .user-catalog-header-row .h-user {
+        flex: 1;
+    }
+
+    .user-catalog-header-row .h-tel {
+        flex: 1;
+    }
+
+    .user-catalog-header-row .h-role {
+        flex: 1;
+    }
+
+    .user-catalog-header-row .h-action {
+        min-width: 100px;
+        text-align: center;
+    }
+
+@media (min-width: 900px) {
+    .user-catalog-header-row {
+        display: flex;
+    }
+}
+
+/* --- РЯДОК (ITEM) --- */
+.user-catalog-item {
+    background-color: #1e1f20;
+    border-radius: 16px;
+    padding: 15px 25px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    transition: background-color 0.2s;
+}
+
+    .user-catalog-item:hover {
+        background-color: #252627;
+    }
+
+/* --- КОЛОНКИ --- */
+
+/* ID: Фіксована ширина + три крапки */
+.col-id {
+    font-weight: bold;
+    color: #6c757d;
+    width: 80px; /* Фіксована ширина замість % */
+    min-width: 80px;
+    /* Обрізка */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: help;
+}
+
+.col-info {
+    flex: 1;
+    word-break: break-word;
+    overflow-wrap: anywhere; /* Щоб довгі email не ламали верстку */
+}
+
+    /* Пропорції колонок (мають збігатися з хедером) */
+    .col-info.email {
+        flex: 1.5;
+        color: #d7ba7d;
+    }
+
+    .col-info.name {
+        flex: 1;
+        font-weight: 600;
+    }
+
+    .col-info.telephone {
+        flex: 1;
+        opacity: 0.8;
+        font-size: 0.9em;
+    }
+
+.label-mobile {
+    display: none;
+}
+
+/* --- ROLES --- */
+.col-roles {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    justify-content: center;
+}
+
+.role-badge {
+    background-color: #313333;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    text-align: center;
+    width: fit-content;
+    white-space: nowrap;
+}
+
+/* --- BUTTONS --- */
+.actions-column {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 100px; /* Фіксована ширина для колонки кнопок */
+}
+
+.action-btn {
+    display: block;
+    width: 100%;
+    padding: 6px 0;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    color: white !important;
+    text-decoration: none !important;
+    transition: opacity 0.2s;
+}
+
+    .action-btn:hover {
+        opacity: 0.8;
+    }
+
+.btn-view {
+    background-color: #004a77;
+}
+
+.btn-edit {
+    background-color: #d7ba7d;
+    color: #1e1f20 !important;
+}
+
+.btn-delete {
+    background-color: #861b2d;
+}
+
+/* --- MOBILE --- */
+@media (max-width: 900px) {
+    .user-catalog-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .col-id {
+        width: 100%;
+        border-bottom: 1px solid #333;
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+    }
+
+    .col-info, .col-roles {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .col-roles {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+
+    .label-mobile {
+        display: inline-block;
+        font-weight: bold;
+        color: #6c757d;
+        min-width: 60px;
+        margin-right: 10px;
+    }
+
+    .actions-column {
+        width: 100%;
+        flex-direction: row; /* Кнопки в рядок на мобільному */
+        margin-top: 10px;
+    }
+
+    .action-btn {
+        padding: 10px 0;
+    }
+}
